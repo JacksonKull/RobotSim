@@ -12,7 +12,16 @@ public class User{
 	// setLeftPower(double) [-1,1], setRightPower(double) [-1,1], double getLeftEncoderDistance(), double getRightEncoderDistance(), double getGyroAngle()
 	// use these to program a awesome path planning
 	public void robotPeriodic() {
-		robot.setLeftPower(1);
-		robot.setRightPower(1);
+		double rightDist = robot.getRightEncoderDistance();
+		double leftDist = robot.getLeftEncoderDistance();
+		double goalLocation = 518 - robot.robotWidthPix/2;
+		double rightDistError = goalLocation - rightDist;
+		double leftDistError = goalLocation - leftDist;
+		double P = 1.0/150.0;
+		
+		robot.setLeftPower(leftDistError*P);
+		robot.setRightPower(rightDistError*P);
+		
+		
 	}
 }
