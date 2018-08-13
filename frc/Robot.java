@@ -15,7 +15,7 @@ public class Robot extends Point{
 	public static int robotLengthPix = Field.getPixelY(robotLengthCM);
 	public static final File robotImage = new File("resources/Robot.png");
 	// ROBOT INCONSISTENCIES
-	public double rightToLeftFactor = 1.05; // 1 is straight, multiplied to right speed
+	public double rightToLeftFactor = 1.00; // 1 is straight, multiplied to right speed
 	// ROBOT DETAILS
 	public double heading, leftSpeed, rightSpeed, setLeft, setRight, encoderLeft, encoderRight;
 	public Point ICC;
