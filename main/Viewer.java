@@ -56,7 +56,7 @@ public class Viewer{
 				}
 			}
 		});
-		variability.setSelected(true);
+		variability.setSelected(false);
 		infoInput.add(variability);
 		pane.add(infoInput, BorderLayout.PAGE_END);
 		frame.setTitle("Robot Pathing Simulator");
