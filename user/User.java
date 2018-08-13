@@ -18,9 +18,18 @@ public class User{
 		double rightDistError = goalLocation - rightDist;
 		double leftDistError = goalLocation - leftDist;
 		double P = 1.0/150.0;
+		double gyroAngle = robot.getGyroAngle();
+		double I = 1.0/50.0;
+		double angleGoal = 0.0;
+		double angleError = angleGoal-gyroAngle;
+		double correctivePower = angleError*I;
+		double leftError = Math.min(rightDistError*P, 1);
+		double rightError = Math.min(leftDistError*P, 1);
 		
-		robot.setLeftPower(leftDistError*P);
-		robot.setRightPower(rightDistError*P);
+		
+		
+		robot.setLeftPower(leftError + correctivePower);
+		robot.setRightPower(rightError - correctivePower);
 		
 		
 	}
