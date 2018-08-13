@@ -21,6 +21,22 @@ public class DrivePID extends BasicPID{
 		this.valMax = valMax;
 	}
 	public double getPower(double currentValue) {
-		return 0;
+		double error = this.getSetPoint() - currentValue;
+		if(prevError == NOT_SET) {
+			prevError = error;
+		}
+		if(Math.signum(error) != Math.signum(prevError)) {
+			sumErrors = 0;
+		}
+		if(error>= valMin && error<= valMax) {
+			sumErrors += (error * .02);
+		}
+		
+		double pPower = error * P;
+		double iPower = sumErrors * I;
+		double dPower = D * ((error - prevError) / .02);
+		double power = pPower + iPower + dPower;
+		prevError = error;
+		return bound(-1, power, 1);
 	}
 }
