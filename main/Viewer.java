@@ -17,6 +17,7 @@ import tools.Point;
 import user.User;
 
 public class Viewer{
+	public static DebugWindow debug = new DebugWindow(10);
 	public static void main(String[] args){
 		// Creating frame & pane
 		JFrame frame = new JFrame();
@@ -29,7 +30,7 @@ public class Viewer{
 		renderPanel.bot = bot;
 		User user = new User(bot);
 		// CREATING CONTAINERS & BUTTONS
-		DebugWindow debug = new DebugWindow(10);
+		
 		renderPanel.debug = debug;
 		/*
 		 * CheckBoxWithTitle inconsis = new CheckBoxWithTitle("Inconsistencies:", 10,
